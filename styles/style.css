@@ -13,8 +13,323 @@
 Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
 
 */
-
 .page {
-  min-inline-size: 320px;
-  min-block-size: 100dvb;
+    min-inline-size: 320px;
+    min-block-size: 100dvb;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    margin: 100px auto;
+    inline-size: clamp(23.438rem, 16.373rem + 30.141vi, 43.5rem);
+    border: 2px solid var(--page__accent_color, #00CC14);
+    font-family: var(--page__accent_font), sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: var(--page__accent_color, #00CC14);
+    background-color: var(--page__background_color);
+}
+
+.header__logo {
+    margin: 133px 0 20px;
+    font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+    line-height: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+}
+
+.header__title {
+    font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+    line-height: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+}
+
+.header__theme-menu {
+    margin-block: 25px;
+}
+
+.theme-menu__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    font-size: 14px;
+    line-height: 14px;
+}
+
+.theme-menu__button {
+    position: relative;
+    background-color: transparent;
+    border: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: opacity .3s ease;
+    appearance: none;
+}
+
+.theme-menu__button:hover,
+.theme-menu__button:focus,
+.theme-menu__button:disabled {
+    opacity: 0.6;
+    outline: none;
+}
+
+.theme-menu__button:disabled {
+    padding: 0;
+    cursor: default;
+    pointer-events: none;
+}
+
+.theme-menu__button:not(:disabled):after {
+    content: "";
+    background: currentColor;
+    transition: transform 0.3s ease;
+    transform: scaleX(0);
+    transform-origin: left;
+    block-size: 2px;
+}
+
+.theme-menu__button:focus-visible:after {
+    transform: scaleX(1);
+}
+
+.theme-menu__button:disabled:before {
+    content: "▶";
+    position: absolute;
+    animation: dynamic_list_element 0.5s ease-in-out infinite alternate;
+    inset-inline-start: -20px;
+}
+
+.page__card_list {
+    display: flex;
+    flex-direction: column;
+    gap: 52px;
+    margin-inline: auto;
+    inline-size: clamp(23.438rem, 16.373rem + 30.141vi, 43.5rem);
+    background-color: var(--page__background_color, #000);
+}
+
+.page__card_list_element {
+    display: grid;
+    position: relative;
+    grid-template-rows: repeat(5, auto);
+    border: 2px solid var(--page__accent_color, #00CC14);
+    color: var(--page__accent_color, #00CC14);
+}
+
+.page__card_title {
+    padding: 2px 0 2px 10px;
+    border-block-end: 2px solid var(--page__accent_color, #00CC14);
+    font-variation-settings: "wght" var(--page__title_font_weight, 700);
+    font-size: 18px;
+    line-height: 21.78px;
+}
+
+.page__card_logo {
+    position: absolute;
+    text-transform: uppercase;
+    top: 56px;
+    right: 25px;
+    font-family: var(--page__accent_font), sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 14px;
+    opacity: .5;
+    z-index: 1;
+}
+
+@supports (
+(-webkit-text-stroke: 1px var(--page__background_color, #fff)) or
+(text-stroke: 1px var(--page__background_color, #fff))
+) {
+    .page__card_title::after {
+        text-shadow: none;
+        -webkit-text-stroke: 1px var(--page__background_color, #fff);
+        text-stroke: 1px var(--page__background_color, #fff);
+    }
+}
+
+.page__card_image {
+    margin-block-end: 34px;
+    object-fit: cover;
+    object-position: center;
+    inline-size: 100%;
+    aspect-ratio: 1 / 1;
+}
+
+.grayscale {
+    filter: grayscale(.5) blur(1px);
+}
+
+.contrast {
+    filter: contrast(175%) brightness(103%);
+}
+
+.invert {
+    filter: invert(70%);
+}
+
+.sepia {
+    filter: sepia(90%);
+}
+
+.rotate {
+    filter: hue-rotate(120deg);
+}
+
+.saturate {
+    filter: saturate(80%);
+}
+
+.contrast {
+    filter: contrast(40%);
+}
+
+.page__card_description {
+    margin: 0 25px 27px;
+}
+
+.page__card_interactive_elements {
+    padding: 0 25px 25px;
+    display: flex;
+    justify-self: end;
+}
+
+.card__icon-button {
+    transition: border-color .3s ease;
+}
+
+.card__like-button {
+    min-inline-size: 127px;
+    outline: 2px solid var(--page__accent_color, #00CC14);
+}
+
+.button::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    inline-size: 0;
+    block-size: 100%;
+    background-color: var(--page__accent_color, #00CC14);
+    transition: width .5s ease-in-out;
+}
+
+.button:hover::before {
+    transform: scaleX(1);
+    width: 100%;
+}
+
+.button:focus-visible {
+    box-shadow: 2px 2px var(--page__accent_color);
+}
+
+.button__text {
+    color: var(--button_hover_color, #00CC14);
+    transition: color .5s ease-in-out;
+}
+
+.button:hover.button__text {
+    color: var(--page__background_color, #000);
+}
+
+@supports (mix-blend-mode: difference) {
+    .button__text,
+    .save__memory-button_icon {
+        color: var(--button_hover_color, #00CC14);
+        mix-blend-mode: difference;
+    }
+}
+
+.card__icon-button:focus {
+    outline: none;
+}
+
+.save__memory-button {
+    display: flex;
+    margin: 52px auto 105px auto;
+    padding: 13px 14px;
+    align-items: center;
+    gap: 10px;
+    inline-size: clamp(19.125rem, 18.487rem + 2.723vi, 20.938rem);
+    border: 2px solid var(--page__accent_color, #00CC14);
+    background-color: var(--page__background_color, #000);
+}
+
+.pop-up_window {
+    padding: 29px;
+    min-inline-size: 357px;
+    font-family: var(--page__accent_font, "PressStart2P", fantasy);
+    color: var(--page__accent_color, #00CC14);
+    background-color: var(--page__background_color, #000);
+    line-height: 21px;
+    text-transform: uppercase;
+}
+
+.pop-up_window::backdrop {
+    opacity: .75;
+    background-color: var(--page__background_color, #000);
+}
+
+.pop-up_window_element {
+    margin-block-end: 30px;
+    display: grid;
+    grid-template-columns: repeat(2, min-content);
+    align-items: center;
+    gap: 20px;
+}
+
+.save__memory-button_icon {
+    inline-size: 22px;
+    block-size: 22px;
+    color: var(--page__accent_color);
+}
+
+.pop-up_window_icon {
+    inline-size: 39px;
+    block-size: 39px;
+    color: var(--button_hover_color, #00CC14);
+}
+
+.pop-up_window .button {
+    text-transform: uppercase;
+    padding: 10px 0;
+    inline-size: 100%;
+    outline: 2px solid var(--page__accent_color);
+}
+
+@media (width <= 375px) {
+    .header__logo {
+        margin-block-start: 120px;
+        font-size: 49px;
+    }
+
+    .header__theme-menu {
+        margin-block-end: 22px;
+    }
+
+    .page__card_list_element:first-child .page__card_logo {
+        top: 76px;
+    }
+
+    .page__card_title {
+        padding-block-end: 5px;
+    }
+
+    .page__card_logo {
+        right: 12px;
+    }
+
+    .page__card_image {
+        margin-block-end: 27px;
+    }
+
+    .save__memory-button {
+        flex-direction: column;
+    }
+
+    .save__memory-button_icon {
+        inline-size: 28px;
+        block-size: 28px;
+    }
 }

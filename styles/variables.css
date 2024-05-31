@@ -1,1 +1,25 @@
 /* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
+:root{
+    --favicon__color: #000;
+    --page__main_font: 'Inter';
+    --page__accent_font: 'PressStart2P';
+    --page__title_font_weight: 785;
+    --page__text_font_weight: 465;
+    --page__background_color: #000;
+    --page__accent_color: #00CC14;
+    --button-heart-contour: #000;
+    --like-icon_colour: #ff0000;
+    --button_hover_color: #00CC14;
+    --page__background_pattern:
+            repeating-linear-gradient(
+                    to right,
+                    #000,
+                    #000 2px, transparent 2px, transparent 4px),
+            repeating-linear-gradient(
+                    to bottom,
+                    #000,
+                    #000 2px, transparent 2px, transparent 4px),
+            linear-gradient(
+                    to bottom,
+                    #007f0c, #004306);
+}

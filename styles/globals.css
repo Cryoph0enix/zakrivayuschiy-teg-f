@@ -5,11 +5,27 @@
 *,
 *::after,
 *::before {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
-  margin: 0;
+    margin: 0;
+}
+
+.page {
+    font-family: 'Inter', sans-serif;
+    font-variation-settings: 'wght' var(--page__text_font_weight, 465);
+    background-image: var(--page__background_pattern, none);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+@supports (font-variation-settings: normal) {
+    .page {
+        font-family: var(--page__main_font), sans-serif;
+    }
 }
 
 h1,
@@ -22,32 +38,51 @@ p,
 ul,
 ol,
 li {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 a {
-  color: inherit;
+    color: inherit;
 }
 
 button,
 input {
-  color: currentColor;
-  font-family: inherit;
-  font-size: inherit;
+    color: currentColor;
+    font-family: inherit;
+    font-size: inherit;
 }
 
 ul,
 ol {
-  list-style: none;
+    list-style: none;
 }
 
 .visually-hidden {
-  position: absolute;
-  inline-size: 1px;
-  block-size: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  white-space: nowrap;
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.page__card_description {
+    line-height: 21px;
+    font-size: 18px;
+    font-variation-settings: "wght" var(--page__text_font_weight, 400);
+}
+
+.button,
+.card__icon-button {
+    position: relative;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    appearance: none;
+    font-family: var(--page__accent_font), sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 12.6px;
 }
