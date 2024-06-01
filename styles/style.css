@@ -140,6 +140,7 @@
     line-height: 14px;
     opacity: .5;
     z-index: 1;
+    text-shadow: 1px 1px var(--page__background_color);
 }
 
 @supports (
@@ -205,6 +206,7 @@
     padding: 0;
     justify-content: center;
     align-items: center;
+    border: 2px solid transparent;
     transition: border-color .3s ease;
 }
 
@@ -252,8 +254,13 @@
 
 .card__icon-button:focus,
 .save__memory-button:focus,
-.card__like-button {
+.card__like-button,
+.pop-up_window_button:focus {
     outline: none;
+}
+
+.card__icon-button:focus-visible {
+    border-color: var(--page__accent_color, #00CC14);
 }
 
 .save__memory-button {
@@ -268,6 +275,7 @@
 }
 
 .pop-up_window {
+    margin: auto;
     padding: 29px;
     min-inline-size: 357px;
     font-family: var(--page__accent_font, "PressStart2P", fantasy);
@@ -275,6 +283,7 @@
     background-color: var(--page__background_color, #000);
     line-height: 21px;
     text-transform: uppercase;
+    border-width: 2px;
 }
 
 .pop-up_window::backdrop {
@@ -306,7 +315,7 @@
     text-transform: uppercase;
     padding: 10px 0;
     inline-size: 100%;
-    outline: 2px solid var(--page__accent_color);
+    border: 2px solid var(--page__accent_color);
 }
 
 @media (width <= 375px) {
@@ -343,5 +352,10 @@
     .save__memory-button_icon {
         inline-size: 28px;
         block-size: 28px;
+    }
+
+    .pop-up_window {
+        padding-inline: 42px;
+        min-inline-size: 341px;
     }
 }

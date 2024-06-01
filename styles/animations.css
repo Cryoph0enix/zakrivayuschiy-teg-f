@@ -24,12 +24,12 @@
 
 .like-icon .core {
     fill: var(--page__background_color, #ffffff);
-    transition: fill 0.3s 0.03s linear;
+    transition: fill .3s .03s linear;
 }
 
 .like-icon .main-body {
     fill: var(--page__background_color, #ffffff);
-    transition: fill 0.3s linear;
+    transition: fill .3s linear;
 }
 
 .like-icon .heart {
@@ -42,33 +42,37 @@
 
 .like-icon:hover .core {
     fill: var(--page__accent_color, #000);
-    transition: fill 0.3s linear;
+    transition: fill .3s linear;
 }
 
 .like-icon:hover .main-body {
     fill: var(--page__accent_color, #000);
-    transition: fill 0.3s 0.05s linear;
+    transition: fill .3s .05s linear;
 }
 
 .like-icon:active .core,
-.like-icon.is-liked .core,
+.like-icon.is-liked .core {
+    fill: var(--like-icon_colour, #ff0000);
+    transition: fill .3s linear;
+}
+
 .like-icon.is-liked .contour {
     fill: var(--like-icon_colour, #ff0000);
-    transition: fill 0.3s linear;
+    transition: fill .3s .1s linear;
 }
 
 .like-icon:active .main-body,
 .like-icon.is-liked .main-body {
     fill: var(--like-icon_colour, #ff0000);
-    transition: fill 0.3s 0.05s linear;
+    transition: fill .3s .05s linear;
 }
 
 .like-icon.is-liked .heart {
-    animation: heartIconScale 0.3s ease-in 0.1s 1 alternate;
+    animation: heartIconScale .3s ease-in .1s 1 alternate;
 }
 
 .like-icon.is-liked .sparks {
-    animation: heartIconSparks 0.3s ease-in 0.3s 1 alternate;
+    animation: heartIconSparks .3s ease-in .3s 1 alternate;
 }
 
 @keyframes heartIconScale {
