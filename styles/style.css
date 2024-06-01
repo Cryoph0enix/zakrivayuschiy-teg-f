@@ -34,9 +34,11 @@
 }
 
 .header__logo {
-    margin: 133px 0 20px;
+    margin: 136px 0 20px;
     font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
     line-height: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+    text-decoration: none;
+    outline: none;
 }
 
 .header__title {
@@ -45,14 +47,13 @@
 }
 
 .header__theme-menu {
-    margin-block: 25px;
+    margin: 25px 0 25px 7px;
 }
 
 .theme-menu__list {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 14px;
+    gap: 10px;
     font-size: 14px;
     line-height: 14px;
 }
@@ -75,13 +76,14 @@
 }
 
 .theme-menu__button:disabled {
-    padding: 0;
+    padding: 0 0 0 5px;
     cursor: default;
     pointer-events: none;
 }
 
 .theme-menu__button:not(:disabled):after {
     content: "";
+    display: block;
     background: currentColor;
     transition: transform 0.3s ease;
     transform: scaleX(0);
@@ -96,8 +98,10 @@
 .theme-menu__button:disabled:before {
     content: "▶";
     position: absolute;
+    top: 0;
+    left: 0;
     animation: dynamic_list_element 0.5s ease-in-out infinite alternate;
-    inset-inline-start: -20px;
+    inset-inline-start: -15px;
 }
 
 .page__card_list {
@@ -106,7 +110,6 @@
     gap: 52px;
     margin-inline: auto;
     inline-size: clamp(23.438rem, 16.373rem + 30.141vi, 43.5rem);
-    background-color: var(--page__background_color, #000);
 }
 
 .page__card_list_element {
@@ -115,6 +118,7 @@
     grid-template-rows: repeat(5, auto);
     border: 2px solid var(--page__accent_color, #00CC14);
     color: var(--page__accent_color, #00CC14);
+    background-color: var(--page__background_color, #000);
 }
 
 .page__card_title {
@@ -142,7 +146,7 @@
 (-webkit-text-stroke: 1px var(--page__background_color, #fff)) or
 (text-stroke: 1px var(--page__background_color, #fff))
 ) {
-    .page__card_title::after {
+    .page__card_logo {
         text-shadow: none;
         -webkit-text-stroke: 1px var(--page__background_color, #fff);
         text-stroke: 1px var(--page__background_color, #fff);
@@ -193,15 +197,20 @@
     padding: 0 25px 25px;
     display: flex;
     justify-self: end;
+    gap: 5px;
 }
 
 .card__icon-button {
+    display: flex;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
     transition: border-color .3s ease;
 }
 
 .card__like-button {
     min-inline-size: 127px;
-    outline: 2px solid var(--page__accent_color, #00CC14);
+    border: 2px solid var(--page__accent_color, #00CC14);
 }
 
 .button::before {
@@ -241,7 +250,9 @@
     }
 }
 
-.card__icon-button:focus {
+.card__icon-button:focus,
+.save__memory-button:focus,
+.card__like-button {
     outline: none;
 }
 
@@ -268,7 +279,7 @@
 
 .pop-up_window::backdrop {
     opacity: .75;
-    background-color: var(--page__background_color, #000);
+    background-color: var(--backdrop__color, #000);
 }
 
 .pop-up_window_element {
@@ -282,13 +293,13 @@
 .save__memory-button_icon {
     inline-size: 22px;
     block-size: 22px;
-    color: var(--page__accent_color);
+    color: var(--button_hover_color);
 }
 
 .pop-up_window_icon {
     inline-size: 39px;
     block-size: 39px;
-    color: var(--button_hover_color, #00CC14);
+    color: var(--page__accent_color, #00CC14);
 }
 
 .pop-up_window .button {
@@ -306,6 +317,7 @@
 
     .header__theme-menu {
         margin-block-end: 22px;
+        margin-inline-start: 12px;
     }
 
     .page__card_list_element:first-child .page__card_logo {
